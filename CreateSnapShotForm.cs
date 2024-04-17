@@ -19,15 +19,15 @@ namespace SingleSnapShot
         private void ButtonCreateSnapShot_Click(object sender, EventArgs e)
         {
             var dateTimeNow = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
-            this.CreateSnapShotMacro(this.TextBoxResolution.Text, this.ExportFolder + @"\\" + this.TextBoxFileName.Text + " " + dateTimeNow);
+            var fileName = this.ExportFolder + @"\" + this.TextBoxFileName.Text + " " + dateTimeNow;
+
+            this.CreateSnapShotMacro(this.TextBoxResolution.Text, fileName);
             Tekla.Structures.Model.Operations.Operation.RunMacro(this.MacroFileName);
         }
-        private void CreateSnapShotMacro(string res, string path)
+        private void CreateSnapShotMacro(string resolution, string fileName)
         {
             var sb = new StringBuilder();
-            sb.AppendLine($"using System;");
-            sb.AppendLine($"using Tekla.Structures.Model;");
-            sb.AppendLine($"");
+
             sb.AppendLine($"namespace Tekla.Technology.Akit.UserScript");
             sb.AppendLine($"{{");
             sb.AppendLine($"    public class Script");
@@ -36,11 +36,11 @@ namespace SingleSnapShot
             sb.AppendLine($"        {{");
             sb.AppendLine($"            akit.Callback(\"diaDisplaySnapshotDialog\", \"\", \"main_frame\");");
             sb.AppendLine($"            akit.PushButton(\"options\", \"snapshot_dialog\");");
-            sb.AppendLine($"            akit.ValueChange(\"snapshot_option_dialog\", \"width\", \"{res}\");");
+            sb.AppendLine($"            akit.ValueChange(\"snapshot_option_dialog\", \"width\", \"{resolution}\");");
             sb.AppendLine($"            akit.ValueChange(\"snapshot_option_dialog\", \"dpi\", \"150\");");
             sb.AppendLine($"            akit.ValueChange(\"snapshot_option_dialog\", \"white_bg_enabled\", \"1\");");
             sb.AppendLine($"            akit.ValueChange(\"snapshot_dialog\", \"target_selection\", \"1\");");
-            sb.AppendLine($"            akit.ValueChange(\"snapshot_dialog\", \"filename\", @\"{path}\" + \".bmp\");");
+            sb.AppendLine($"            akit.ValueChange(\"snapshot_dialog\", \"filename\", @\"{fileName}\" + \".bmp\");");
             sb.AppendLine($"            akit.ValueChange(\"snapshot_dialog\", \"show_with_viewer_enabled\", \"0\");");
             sb.AppendLine($"            akit.PushButton(\"take_snapshot\", \"snapshot_dialog\"); ");
             sb.AppendLine($"            akit.PushButton(\"option_ok\", \"snapshot_option_dialog\");");

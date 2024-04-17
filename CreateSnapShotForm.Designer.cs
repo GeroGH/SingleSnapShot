@@ -106,7 +106,7 @@ namespace SingleSnapShot
             this.Controls.Add(this.label1);
             this.Name = "CreateSnapShot";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Create Snap Shot v2024.04.17b";
+            this.Text = "Create Snap Shot v2024.04.17d";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.CreateSnapShot_Load);
             this.ResumeLayout(false);
