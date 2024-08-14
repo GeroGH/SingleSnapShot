@@ -40,7 +40,7 @@ namespace SingleSnapShot
             sb.AppendLine($"            akit.ValueChange(\"snapshot_option_dialog\", \"dpi\", \"150\");");
             sb.AppendLine($"            akit.ValueChange(\"snapshot_option_dialog\", \"white_bg_enabled\", \"1\");");
             sb.AppendLine($"            akit.ValueChange(\"snapshot_dialog\", \"target_selection\", \"1\");");
-            sb.AppendLine($"            akit.ValueChange(\"snapshot_dialog\", \"filename\", @\"{fileName}\" + \".bmp\");");
+            sb.AppendLine($"            akit.ValueChange(\"snapshot_dialog\", \"filename\", @\"{fileName}\" + \".png\");");
             sb.AppendLine($"            akit.ValueChange(\"snapshot_dialog\", \"show_with_viewer_enabled\", \"0\");");
             sb.AppendLine($"            akit.PushButton(\"take_snapshot\", \"snapshot_dialog\"); ");
             sb.AppendLine($"            akit.PushButton(\"option_ok\", \"snapshot_option_dialog\");");
